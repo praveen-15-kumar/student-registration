@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Registration</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Register Student</h1>
+
+  <form id="registerForm">
+    <input type="text" name="name" placeholder="Name" required /><br/>
+
+    <input type="email" name="email" placeholder="Email" required /><br/>
+
+    <!-- Dropdown for Course -->
+    <select name="course" required>
+      <option value="">-- Select Course --</option>
+      <option value="B.Tech">B.Tech</option>
+      <option value="M.Tech">M.Tech</option>
+      <option value="Diploma">Diploma</option>
+      <option value="MBA">MBA</option>
+      <option value="B.Sc">B.Sc</option>
+      <option value="BCA">BCA</option>
+      <option value="B.Com">B.Com</option>
+      <option value="BA">BA</option>
+      <option value="Other">Other</option>
+    </select><br/>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>

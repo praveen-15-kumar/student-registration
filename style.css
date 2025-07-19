@@ -1,0 +1,52 @@
+/* Basic Page Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+/* Heading */
+h1, h2 {
+  color: #2c3e50;
+}
+
+/* Input Fields */
+input {
+  padding: 8px;
+  margin: 8px 0;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  display: block;
+}
+
+/* Button */
+button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Student List */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: white;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
