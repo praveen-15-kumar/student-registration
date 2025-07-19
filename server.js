@@ -1,42 +1,32 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const Student = require('./models/Student');
+const form = document.getElementById('registerForm');
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-// ✅ Use MongoDB URI from environment variable
-const mongoURL = process.env.MONGO_URL || 'mongodb://localhost:27017/students';
+  const student = {
+    name: form.name.value,
+    email: form.email.value,
+    course: form.course.value
+  };
 
-mongoose.connect(mongoURL)
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error('MongoDB connection error:', err));
-
-// ✅ POST: Add student
-app.post('/students', async (req, res) => {
   try {
-    const student = new Student(req.body);
-    await student.save();
-    res.status(201).send(student);
-  } catch (error) {
-    res.status(400).send({ error: 'Failed to save student' });
-  }
-});
+    const res = await fetch('http://localhost:5000/students', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(student)
+    });
 
-// ✅ GET: Get all students
-app.get('/students', async (req, res) => {
-  try {
-    const students = await Student.find();
-    res.send(students);
+    if (res.ok) {
+      alert('Student registered successfully!');
+      form.reset(); // Clear the form
+    } else {
+      const data = await res.json();
+      alert(data.message || 'Error registering student.');
+    }
   } catch (error) {
-    res.status(500).send({ error: 'Failed to fetch students' });
+    console.error('Error:', error);
+    alert('Server error. Please try again later.');
   }
-});
-
-// ✅ Dynamic PORT for Render
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
 });
